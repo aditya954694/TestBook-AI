@@ -2,12 +2,11 @@ services:
   - type: web
     name: testbook-ai-bot
     env: python
-    buildCommand: |
-      apt-get update && apt-get install -y tesseract-ocr ffmpeg
-      pip install -r requirements.txt
-    startCommand: python main.py
+    plan: free
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: gunicorn main:app
     envVars:
       - key: BOT_TOKEN
-        sync: false
-      - key: OPENAI_API_KEY
-        sync: false
+        value: 8239622823:AAGSAAqDW3KDTHjbxyELOmMfvHtJ6wgeVPQ
+      - key: OPEN_API_KEY
+        value: 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
