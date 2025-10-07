@@ -1,6 +1,13 @@
 services:
-  - type: worker
-    name: testbook-ai-bot-pro
+  - type: web
+    name: testbook-ai-bot
     env: python
-    buildCommand: "apt-get update && apt-get install -y tesseract-ocr && pip install -r requirements.txt"
-    startCommand: "python main.py"
+    buildCommand: |
+      apt-get update && apt-get install -y tesseract-ocr ffmpeg
+      pip install -r requirements.txt
+    startCommand: python main.py
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
