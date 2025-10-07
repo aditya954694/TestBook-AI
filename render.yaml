@@ -1,0 +1,6 @@
+services:
+  - type: worker
+    name: testbook-ai-bot-pro
+    env: python
+    buildCommand: "apt-get update && apt-get install -y tesseract-ocr && pip install -r requirements.txt"
+    startCommand: "python main.py"
